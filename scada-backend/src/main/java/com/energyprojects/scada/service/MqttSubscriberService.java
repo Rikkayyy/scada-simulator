@@ -9,7 +9,6 @@ import org.eclipse.paho.mqttv5.client.MqttClient;
 import org.eclipse.paho.mqttv5.client.MqttConnectionOptions;
 import org.eclipse.paho.mqttv5.common.MqttSubscription;
 import org.eclipse.paho.mqttv5.client.IMqttMessageListener;
-import org.eclipse.paho.mqttv5.common.MqttMessage;
 import org.springframework.stereotype.Service;
 
 @Service
