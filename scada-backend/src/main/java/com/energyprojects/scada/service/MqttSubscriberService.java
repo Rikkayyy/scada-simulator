@@ -5,7 +5,6 @@ import com.energyprojects.scada.repository.SensorReadingRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import jakarta.annotation.PostConstruct;
-import org.eclipse.paho.mqttv5.client.IMqttMessageListener;
 import org.eclipse.paho.mqttv5.client.MqttClient;
 import org.eclipse.paho.mqttv5.client.MqttConnectionOptions;
 import org.eclipse.paho.mqttv5.common.MqttMessage;
@@ -29,7 +28,7 @@ public class MqttSubscriberService {
         MqttConnectionOptions options = new MqttConnectionOptions();
         client.connect(options);
 
-        client.subscribe("sensors/#", 0, (topic, message) -> {
+        client.subscribe("sensors/#", 0, (String topic, MqttMessage message) -> {
             try {
                 String json = new String(message.getPayload());
                 SensorReading reading = objectMapper.readValue(json, SensorReading.class);
